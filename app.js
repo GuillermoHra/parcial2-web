@@ -2,6 +2,8 @@ const express = require('express')
 const omdb = require('./omdb.js')
 const app = express()
 
+const port = process.env.PORT || 3000
+
 app.get('/omdb', function(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*')
     if(!req.query.search){
@@ -44,6 +46,6 @@ app.get('*', function(req, res) {
     })
 })
 
-app.listen(4000, function(){
+app.listen(port, function(){
     console.log('up and running')
 })
