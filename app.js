@@ -70,14 +70,21 @@ app.get('/met', function(req, res) {
             }
             else {
                 const dataPiece = JSON.parse(bodyPiece)
-                res.send({
-                    searchTerm: req.query.search,
-                    artist : dataPiece.constituents[0].name,
-                    title: dataPiece.title,
-                    year: dataPiece.objectEndDate,
-                    technique: dataPiece.medium,
-                    metUrl: dataPiece.objectURL
-                })
+                if(dataPiece.constituents != null) {
+                    res.send({
+                        searchTerm: req.query.search,
+                        artist : dataPiece.constituents[0].name,
+                        title: dataPiece.title,
+                        year: dataPiece.objectEndDate,
+                        technique: dataPiece.medium,
+                        metUrl: dataPiece.objectURL
+                    })
+                }
+                else {
+                    res.send({
+                        error: 'No se encontró información adicional de esa pieza'
+                    })
+                }
             }
         })
     })
