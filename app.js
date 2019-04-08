@@ -86,7 +86,7 @@ app.get('/met', function(req, res) {
 
 app.get('*', function(req, res) {
     res.send({
-        error: 'Esta ruta no existe'
+        error: 'Esta ruta no existe. Intenta: /alumnos/id o /met'
     })
 })
 
